@@ -1,0 +1,47 @@
+/**
+ * educative question
+ */
+public class SortColours {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//0- red , 1- white,2 - blue 
+		int[] colors = {2,1,1,0,0};
+		//output should be  {0,1,1,2,2,2} -- all colors are sorted in order of red,whilte and blue
+		// all same colors are adjacent to each other 
+	//approach - used threee pointers start, current , end ( start points to 1, end points to 2)
+		
+		int start = 0;
+		int current  = 0;
+		int end = colors.length -1;
+		
+		while(current <= end) {
+			
+			if(colors[current] == 1) {
+				current ++;
+			}
+			
+			else if(colors[current] == 0) {
+				int temp = colors[start];
+				colors[start] = colors[current];
+				colors[current] = temp;
+				start++;
+				current++;
+				
+			}
+			
+			else {
+				int temp = colors[end];
+				colors[end] = colors[current];
+				colors[current] = temp;
+				end--;
+			}
+			
+		}
+		
+		for(int element : colors) {
+			System.out.print("Color ********"+element);
+		}
+	}
+
+}
